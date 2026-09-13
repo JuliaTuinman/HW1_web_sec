@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Five-in-a-Row</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>Five-in-a-Row</h1>
+
+    <div id="status" class="status">Connecting...</div>
+    <div id="presence" class="presence"></div>
+
+    <canvas id="board" width="564" height="564"></canvas>
+
+    <div class="controls">
+      <button id="restartBtn" disabled>Play Again</button>
+    </div>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/shared/gameRules.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
