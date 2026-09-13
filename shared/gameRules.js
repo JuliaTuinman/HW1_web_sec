@@ -1,6 +1,5 @@
-// Shared rules module: loaded as a <script> in the browser AND required() on
-// the server, so there is exactly one implementation of move legality and
-// win detection. The server's copy is the one that is actually trusted.
+// used as a <script> in browser and require() on server, one set of rules
+// server's copy is the one that counts
 (function (root, factory) {
   if (typeof module === "object" && module.exports) {
     module.exports = factory();
@@ -8,7 +7,7 @@
     root.GameRules = factory();
   }
 })(typeof self !== "undefined" ? self : this, function () {
-  const BOARD_SIZE = 15;
+  const BOARD_SIZE = 19;
   const DIRECTIONS = [
     [0, 1], // horizontal
     [1, 0], // vertical
