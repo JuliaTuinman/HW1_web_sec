@@ -13,10 +13,9 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, "../public")));
 app.use("/shared", express.static(path.join(__dirname, "../shared")));
 
-// Single in-memory match. players maps socket.id -> "black" | "white",
-// which is the server's own record of who is who -- the client never gets
-// to declare its color, so a modified client-side script cannot claim to
-// be the other player.
+// Single in-memory match
+// players: socket.id -> "black"/"white"
+// server-owned, never client-declared (prevents color spoofing)
 function freshGame() {
   return {
     board: GameRules.createEmptyBoard(),
@@ -123,8 +122,8 @@ io.on("connection", (socket) => {
     delete game.players[socket.id];
 
     if (wasPlayer) {
-      // A player leaving mid-match makes the board meaningless; reset it
-      // so the next person to connect gets a clean game.
+      // A player leaving mid-match ends game -> if player leaves,
+      // reset it so the next person to connect gets a clean game
       game = freshGame();
       io.emit("opponentLeft", { message: "A player disconnected. The game has been reset." });
       io.emit("gameReset", publicState());
