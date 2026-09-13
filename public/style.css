@@ -38,6 +38,16 @@ h1 {
   min-height: 1.4em;
 }
 
+.status.your-turn {
+  color: #e63946;
+  animation: pulse-turn 1s ease-in-out infinite;
+}
+
+@keyframes pulse-turn {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
 .presence {
   font-size: 0.85rem;
   color: #666;

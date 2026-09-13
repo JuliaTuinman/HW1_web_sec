@@ -102,6 +102,10 @@
       playerCount < 2 ? `${playerCount}/2 players connected` : "";
 
     restartBtn.disabled = !(gameOver && myColor !== null);
+
+    const isMyTurn =
+      myColor !== null && !gameOver && playerCount === 2 && currentTurn === myColor;
+    statusEl.classList.toggle("your-turn", isMyTurn);
   }
 
   function capitalize(s) {
@@ -114,8 +118,7 @@
     const { row, col } = cellFromEvent(evt);
     if (!GameRules.isValidMove(board, row, col)) return;
 
-    // Client-side check above is only for responsiveness; the server
-    // re-validates every move independently before it counts.
+    // just for responsiveness, server double-checks everything anyway
     socket.emit("placeStone", { row, col });
   });
 
