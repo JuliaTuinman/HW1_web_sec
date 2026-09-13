@@ -1,0 +1,13 @@
+{
+  "name": "five-in-a-row",
+  "version": "1.0.0",
+  "description": "Homework 1: JavaScript Five-in-a-Row game with a Node.js server.",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  }
+}
